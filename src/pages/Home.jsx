@@ -31,10 +31,6 @@ function Home() {
       <div className="page-content">
         {/* Hero Banner */}
         <div className="hero-banner">
-          <div className="hero-company-badge">
-            <img src="/phr-logo.png" alt="PT Pertamina Hulu Rokan" className="hero-company-logo" />
-            <span className="hero-company-title">PT Pertamina Hulu Rokan</span>
-          </div>
           <div className="hero-content">
             <div className="hero-badge">DIGITAL HANDBOOK</div>
             <h2 className="hero-title">Well Intervention</h2>
