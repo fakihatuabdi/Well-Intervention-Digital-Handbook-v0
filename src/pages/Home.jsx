@@ -33,7 +33,7 @@ function Home() {
         <div className="hero-banner">
           <div className="hero-content">
             <div className="hero-badge">DIGITAL HANDBOOK</div>
-            <h2 className="hero-title">Well Intervention</h2>
+            <h2 className="hero-title">WELL INTERVENTION</h2>
             <h3 className="hero-subtitle">Engineering & Operation Best Practice</h3>
             <p className="hero-description">A Comprehensive Guide for Oil & Gas Well Operations</p>
           </div>
