@@ -1,8 +1,16 @@
-# GitHub Codespaces ♥️ React
+# Well Intervention Digital Handbook v0
 
-Welcome to your shiny new Codespace running React! We've got everything fired up and running for you to explore React.
+A comprehensive digital handbook application for oil and gas professionals, featuring interactive content on Rig Hub, Well Intervention, and other industry-specific resources.
 
-You've got a blank canvas to work on from a git perspective as well. There's a single initial commit with the what you're seeing right now - where you go from here is up to you!
+## Features
+
+- 📱 Progressive Web App (PWA) - Works on mobile like a native app
+- 📚 Comprehensive Handbook with multiple modules
+- 🔍 Search functionality
+- 📊 Calculator tools
+- 💬 AI Chatbot integration
+- 🔖 Bookmarks for saving articles
+- 📱 Fully responsive design
 
 Everything you do here is contained within this one codespace. There is no repository on GitHub yet. If and when you’re ready you can click "Publish Branch" and we’ll create your repository and push up your project. If you were just exploring then and have no further need for this code then you can simply delete your codespace and it's gone forever.
 
