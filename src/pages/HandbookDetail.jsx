@@ -10,14 +10,12 @@ function HandbookDetail() {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  const handleChapterClick = (chapter) => {
-    // Track view
-    incrementArticleView(id, chapter.id, chapter.title);
+  const handleChapterClick = async (chapter) => {
+    // Track view (global counter)
+    await incrementArticleView(id, chapter.id, chapter.title);
     // Navigate to article
     const handbookParam = id === 'rig-hub' ? 'wk-rokan' : id;
     navigate(`/chapter/${handbookParam}/${chapter.id}`);
-    // Dispatch custom event untuk update Home component
-    window.dispatchEvent(new Event('storage'));
   };
 
   const getHandbookData = () => {

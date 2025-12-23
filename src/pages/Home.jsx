@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Header from '../components/Header';
 import { handbooks } from '../data/handbookData';
-import { getTopArticles } from '../utils/viewTracker';
+import { subscribeToTopArticles } from '../utils/viewTracker';
 import './Home.css';
 
 function Home() {
@@ -10,18 +10,17 @@ function Home() {
   const [topArticles, setTopArticles] = useState([]);
 
   useEffect(() => {
-    // Update top articles setiap kali component dimount atau ketika ada perubahan
-    const updateTopArticles = () => {
-      const articles = getTopArticles(5);
+    // Subscribe to real-time updates from Firebase
+    const unsubscribe = subscribeToTopArticles(5, (articles) => {
       setTopArticles(articles);
+    });
+    
+    // Cleanup subscription on unmount
+    return () => {
+      if (unsubscribe) {
+        unsubscribe();
+      }
     };
-    
-    updateTopArticles();
-    
-    // Listen untuk storage changes dari tab lain
-    window.addEventListener('storage', updateTopArticles);
-    
-    return () => window.removeEventListener('storage', updateTopArticles);
   }, []);
 
   return (
