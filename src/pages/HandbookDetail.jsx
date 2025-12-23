@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import Header from '../components/Header';
-import { generalKnowledgeChapters, rigHubChapters } from '../data/handbookData';
+import { generalKnowledgeChapters, rigHubChapters, articleContent } from '../data/handbookData';
 import { incrementArticleView } from '../utils/viewTracker';
 import { ChevronRight } from 'lucide-react';
 import './HandbookDetail.css';
@@ -9,6 +9,8 @@ import './HandbookDetail.css';
 function HandbookDetail() {
   const { id } = useParams();
   const navigate = useNavigate();
+  const [searchQuery, setSearchQuery] = useState('');
+  const [filteredChapters, setFilteredChapters] = useState([]);
 
   const handleChapterClick = async (chapter) => {
     // Track view (global counter)
@@ -46,6 +48,62 @@ function HandbookDetail() {
 
   const handbook = getHandbookData();
 
+  // Filter chapters based on search query
+  useEffect(() => {
+    if (!searchQuery.trim()) {
+      setFilteredChapters(handbook.chapters);
+      return;
+    }
+
+    const query = searchQuery.toLowerCase();
+    const filtered = handbook.chapters.filter((chapter) => {
+      // Search in chapter title
+      if (chapter.title.toLowerCase().includes(query)) {
+        return true;
+      }
+      
+      // Search in chapter content
+      const contentKey = getContentKey(id, chapter.id);
+      if (contentKey && articleContent[contentKey]) {
+        const content = articleContent[contentKey];
+        return (
+          content.content?.toLowerCase().includes(query) ||
+          content.alert?.toLowerCase().includes(query) ||
+          content.glossary?.toLowerCase().includes(query)
+        );
+      }
+      
+      return false;
+    });
+    
+    setFilteredChapters(filtered);
+  }, [searchQuery, handbook.chapters, id]);
+
+  // Helper function to get content key
+  const getContentKey = (handbookId, chapterId) => {
+    if (handbookId === 'rig-hub') {
+      const map = {
+        1: 'objective', 2: 'rig-hub-introduction', 3: 'on-boarding-process',
+        4: 'sumatera-operation-area', 5: 'artificial-lift', 6: 'heavy-oil-best-practice',
+        7: 'light-oil-best-practice', 8: 'special-operation', 9: 'simops', 10: 'appendix'
+      };
+      return map[chapterId];
+    } else if (handbookId === 'general-knowledge') {
+      const map = {
+        1: 'abbreviation', 2: 'drilling-safety', 3: 'hsse-rig-operation',
+        4: 'rig-unit', 5: 'pre-well-intervention', 6: 'well-intervention-operation',
+        7: 'well-problem-handling', 8: 'packer', 9: 'well-head',
+        10: 'well-completion', 11: 'artificial-lift-gk', 12: 'glossary'
+      };
+      return map[chapterId];
+    }
+    return null;
+  };
+
+  const handleSearch = (query) => {
+    setSearchQuery(query);
+  };
+
   return (
     <div className="page">
       <Header showBack={true} />
@@ -70,11 +128,19 @@ function HandbookDetail() {
                 type="text"
                 className="search-box"
                 placeholder={`Search in ${handbook.title}...`}
+                value={searchQuery}
+                onChange={(e) => handleSearch(e.target.value)}
               />
             </div>
 
+            {searchQuery && (
+              <p className="search-results-count">
+                {filteredChapters.length} chapter{filteredChapters.length !== 1 ? 's' : ''} found
+              </p>
+            )}
+
             <div className="chapter-list">
-              {handbook.chapters.map((chapter) => (
+              {filteredChapters.map((chapter) => (
                 <div
                   key={chapter.id}
                   className="chapter-item"

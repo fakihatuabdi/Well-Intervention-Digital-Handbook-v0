@@ -67,6 +67,16 @@
   box-shadow: 0 4px 20px rgba(51, 65, 85, 0.15);
 }
 
+.search-results-count {
+  padding: 8px 20px;
+  margin: 0;
+  font-size: 13px;
+  color: #64748b;
+  font-weight: 600;
+  background: rgba(51, 65, 85, 0.04);
+  border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+}
+
 .chapter-list {
   padding: 16px 20px;
 }
