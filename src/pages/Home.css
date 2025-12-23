@@ -28,6 +28,38 @@
   display: flex;
   align-items: center;
   justify-content: center;
+.hero-company-badge {
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 18px;
+  background: transparent;
+  border-radius: 10px;
+  backdrop-filter: none;
+  box-shadow: none;
+  z-index: 2;
+}
+
+.hero-company-logo {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+  object-position: center;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+
+.hero-company-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #ffffff;
+  letter-spacing: 0.3px;
+  white-space: nowrap;
+}
+
 }
 
 .hero-banner::before {
@@ -166,14 +198,21 @@
 }
 
 .handbook-icon {
-  width: 72px;
-  height: 72px;
+  width: 88px;
+  height: 88px;
   margin: 0 auto 16px;
   border-radius: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.handbook-icon-img {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+  display: block;
 }
 
 .handbook-title {

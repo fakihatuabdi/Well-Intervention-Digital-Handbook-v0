@@ -1,0 +1,134 @@
+.handbook-intro {
+  padding: 24px 20px;
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+  margin-bottom: 4px;
+  border-bottom: 3px solid rgba(102, 126, 234, 0.2);
+}
+
+.intro-text {
+  font-size: 14px;
+  color: #4b5563;
+  margin: 0;
+  line-height: 1.6;
+  font-weight: 500;
+}
+
+.handbook-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 20px;
+}
+
+.handbook-list-item {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 20px;
+  display: flex;
+  gap: 18px;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  position: relative;
+  overflow: hidden;
+}
+
+.handbook-list-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: linear-gradient(180deg, #667eea 0%, #764ba2 100%);
+  transform: scaleY(0);
+  transition: transform 0.3s ease;
+}
+
+.handbook-list-item:hover::before {
+  transform: scaleY(1);
+}
+
+.handbook-list-item:hover {
+  transform: translateX(8px);
+  box-shadow: 0 8px 32px rgba(102, 126, 234, 0.2);
+}
+
+.handbook-list-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.handbook-list-icon-img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  display: block;
+}
+
+.handbook-list-content {
+  flex: 1;
+}
+
+.handbook-list-title {
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0 0 6px 0;
+  color: #1f2937;
+}
+
+.handbook-list-description {
+  font-size: 13px;
+  color: #6b7280;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .handbook-intro {
+    padding: 20px 16px;
+  }
+  
+  .handbook-list {
+    padding: 16px;
+    gap: 12px;
+  }
+  
+  .handbook-list-item {
+    padding: 16px;
+    gap: 14px;
+  }
+  
+  .handbook-list-icon {
+    width: 52px;
+    height: 52px;
+  }
+  
+  .handbook-list-title {
+    font-size: 15px;
+  }
+  
+  .handbook-list-description {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .handbook-list {
+    padding: 12px;
+  }
+  
+  .handbook-list-item {
+    padding: 14px;
+  }
+}

@@ -19,9 +19,14 @@ function Header({ title, showBack = false }) {
           </button>
         )}
         {!showBack && (
-          <div className="header-title-section">
-            <img src="/phr-logo.png" alt="Logo WK Rokan Operation" className="header-logo" />
-            <h1 className="header-title">PT Pertamina Hulu Rokan</h1>
+          <div className="header-branding">
+            <div className="header-main-section">
+              <img src="/app-logo.png" alt="Well Intervention Digital Handbook" className="header-main-logo" />
+              <div className="header-main-content">
+                <h1 className="header-main-title">Well Intervention</h1>
+                <p className="header-main-subtitle">Digital Handbook</p>
+              </div>
+            </div>
           </div>
         )}
       </div>
