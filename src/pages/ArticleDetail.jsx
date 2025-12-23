@@ -17,6 +17,12 @@ function ArticleDetail() {
   
   const [checklist, setChecklist] = useState(articleContent.checklist);
   const [isBookmarked, setIsBookmarked] = useState(false);
+  
+  // Scroll to top when component mounts or chapter changes
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [handbookId, chapterId]);
+  
   // Update checklist when content changes
   useEffect(() => {
     setChecklist(articleContent.checklist);
