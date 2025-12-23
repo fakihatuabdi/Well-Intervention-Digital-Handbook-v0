@@ -86,7 +86,10 @@ function Home() {
                 <div 
                   key={`${article.handbookId}-${article.chapterId}`}
                   className="article-card" 
-                  onClick={() => navigate(`/handbook/${article.handbookId}`)}
+                  onClick={() => {
+                    const targetHandbook = article.handbookId === 'rig-hub' ? 'wk-rokan' : article.handbookId;
+                    navigate(`/chapter/${targetHandbook}/${article.chapterId}`);
+                  }}
                 >
                   <div className="article-number">{index + 1}</div>
                   <div className="article-content">
