@@ -2,15 +2,15 @@ import { initializeApp } from 'firebase/app';
 import { getDatabase } from 'firebase/database';
 
 // Firebase configuration
-// Replace with your Firebase project credentials
+// Get remaining values from Firebase Console > Project Settings > Your apps
 const firebaseConfig = {
-  apiKey: "AIzaSyBqm7YxqX9Z8K7H6fZ2tQvJ9tN8xJ5pL4M",
-  authDomain: "well-intervention-handbook.firebaseapp.com",
-  databaseURL: "https://well-intervention-handbook-default-rtdb.asia-southeast1.firebasedatabase.app",
-  projectId: "well-intervention-handbook",
-  storageBucket: "well-intervention-handbook.appspot.com",
-  messagingSenderId: "123456789012",
-  appId: "1:123456789012:web:abcdef123456"
+  apiKey: "YOUR_API_KEY_HERE",
+  authDomain: "wi-digital-handbook-v0.firebaseapp.com",
+  databaseURL: "https://wi-digital-handbook-v0-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "wi-digital-handbook-v0",
+  storageBucket: "wi-digital-handbook-v0.appspot.com",
+  messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+  appId: "YOUR_APP_ID"
 };
 
 // Initialize Firebase
