@@ -15,7 +15,7 @@ function HandbookDetail() {
   const handleChapterClick = async (chapter) => {
     // Track view (global counter)
     await incrementArticleView(id, chapter.id, chapter.title);
-    // Navigate to article
+    // Navigate to article - use 'wk-rokan' for rig-hub chapters
     const handbookParam = id === 'rig-hub' ? 'wk-rokan' : id;
     navigate(`/chapter/${handbookParam}/${chapter.id}`);
   };
@@ -37,12 +37,20 @@ function HandbookDetail() {
         chapters: [],
         hasComingSoon: true
       };
+    } else if (id === 'rig-hub') {
+      return {
+        title: 'Rig Hub',
+        subtitle: '10 chapters',
+        iconImg: '/rig-hub-logo.png',
+        chapters: rigHubChapters,
+        hasComingSoon: false
+      };
     }
     return { 
-      title: 'Rig Hub', 
-      subtitle: '10 chapters', 
-      iconImg: '/rig-hub-logo.png',
-      chapters: rigHubChapters 
+      title: 'Handbook', 
+      subtitle: '', 
+      icon: '📚',
+      chapters: [] 
     };
   };
 
@@ -163,7 +171,19 @@ function HandbookDetail() {
               <p className="module-description">
                 10 chapters - Rig Hub Introduction, Artificial Lift, Heavy/Light Oil Best Practices, Special Operation, SIMOPS, Appendix.
               </p>
-              <button className="chapter-button" onClick={() => navigate('/handbook/rig-hub')}>Open</button>
+              <button 
+                type="button"
+                className="chapter-button" 
+                style={{ cursor: 'pointer', pointerEvents: 'all', zIndex: 10, position: 'relative' }}
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  console.log('Navigating to Rig Hub...');
+                  navigate('/handbook/rig-hub');
+                }}
+              >
+                Open
+              </button>
             </div>
             <div className="coming-soon-badge">
               <span className="badge-text">Coming Soon!</span>
