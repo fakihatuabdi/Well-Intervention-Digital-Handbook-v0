@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Header from '../components/Header';
-import { Trash2 } from 'lucide-react';
+import { Trash2, BookOpen, ArrowRight, Sparkles } from 'lucide-react';
 import { getBookmarks, removeBookmark as removeBookmarkUtil } from '../utils/bookmarks';
 import './Bookmarks.css';
 
@@ -22,42 +22,75 @@ function Bookmarks() {
     setBookmarks(next);
   };
 
+  const getCategoryIcon = (category) => {
+    if (category.includes('Rig Hub')) return '🛢️';
+    if (category.includes('General')) return '📚';
+    return '📄';
+  };
+
+  const getCategoryColor = (category) => {
+    if (category.includes('Rig Hub')) return 'rig-hub-category';
+    if (category.includes('General')) return 'general-category';
+    return 'article-category';
+  };
+
   return (
     <div className="page">
       <Header title="Bookmarks" showBack={false} />
       
       <div className="page-content">
         <div className="bookmarks-header">
-          <p className="bookmarks-count">{bookmarks.length} items</p>
+          <div className="header-content">
+            <div className="header-icon">
+              <Sparkles size={24} />
+            </div>
+            <div className="header-text">
+              <h2 className="header-title">My Bookmarks</h2>
+              <p className="bookmarks-count">{bookmarks.length} saved {bookmarks.length === 1 ? 'item' : 'items'}</p>
+            </div>
+          </div>
         </div>
 
         {bookmarks.length > 0 ? (
           <div className="bookmarks-list">
-            {bookmarks.map((bookmark) => (
+            {bookmarks.map((bookmark, index) => (
               <div
                 key={bookmark.id}
                 className="bookmark-item"
-                onClick={() => navigate(bookmark.path || `/article/${bookmark.id}`)}
+                style={{ animationDelay: `${index * 0.05}s` }}
               >
-                <div className="bookmark-content">
-                  <h3 className="bookmark-title">{bookmark.title}</h3>
-                  <p className="bookmark-category">📚 {bookmark.category}</p>
-                  <div className="bookmark-progress">
-                    <span className="progress-label">📖 Pages read: {bookmark.progress}%</span>
+                <div className="bookmark-ribbon"></div>
+                <div 
+                  className="bookmark-main"
+                  onClick={() => navigate(bookmark.path || `/article/${bookmark.id}`)}
+                >
+                  <div className="bookmark-icon-wrapper">
+                    <BookOpen size={24} className="bookmark-icon" />
                   </div>
+                  <div className="bookmark-content">
+                    <h3 className="bookmark-title">{bookmark.title}</h3>
+                    <div className={`bookmark-category ${getCategoryColor(bookmark.category)}`}>
+                      <span className="category-icon">{getCategoryIcon(bookmark.category)}</span>
+                      <span className="category-text">{bookmark.category}</span>
+                    </div>
+                    <div className="bookmark-progress-bar">
+                      <div 
+                        className="progress-fill" 
+                        style={{ width: `${bookmark.progress}%` }}
+                      ></div>
+                    </div>
+                    <p className="progress-text">{bookmark.progress}% completed</p>
+                  </div>
+                  <ArrowRight size={20} className="arrow-icon" />
                 </div>
                 <div className="bookmark-actions">
                   <button
-                    className="remove-button"
+                    className="action-button remove-button"
                     onClick={(e) => removeBookmark(bookmark.id, e)}
+                    title="Remove bookmark"
                   >
-                    Remove
-                  </button>
-                  <button
-                    className="open-button"
-                    onClick={() => navigate(bookmark.path || `/article/${bookmark.id}`)}
-                  >
-                    Open
+                    <Trash2 size={16} />
+                    <span>Remove</span>
                   </button>
                 </div>
               </div>
@@ -74,7 +107,8 @@ function Bookmarks() {
               className="browse-button"
               onClick={() => navigate('/handbook')}
             >
-              Browse Handbooks
+              <BookOpen size={20} />
+              <span>Browse Handbooks</span>
             </button>
           </div>
         )}
