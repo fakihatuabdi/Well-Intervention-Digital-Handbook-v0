@@ -15,9 +15,8 @@ function HandbookDetail() {
   const handleChapterClick = async (chapter) => {
     // Track view (global counter)
     await incrementArticleView(id, chapter.id, chapter.title);
-    // Navigate to article - use 'wk-rokan' for rig-hub chapters
-    const handbookParam = id === 'rig-hub' ? 'wk-rokan' : id;
-    navigate(`/chapter/${handbookParam}/${chapter.id}`);
+    // Navigate to article using the current handbook ID
+    navigate(`/chapter/${id}/${chapter.id}`);
   };
 
   const getHandbookData = () => {

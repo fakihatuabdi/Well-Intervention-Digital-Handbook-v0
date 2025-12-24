@@ -2122,8 +2122,8 @@ export const articleContent = {
 
   // Function to get article content by ID
   export function getArticleContent(chapterId, handbookId) {
-    // Map chapter IDs to content keys for Rig Hub
-    if (handbookId === 'wk-rokan') {
+    // Map chapter IDs to content keys for Rig Hub (both 'rig-hub' and 'wk-rokan')
+    if (handbookId === 'wk-rokan' || handbookId === 'rig-hub') {
      const contentMap = {
       1: 'objective',
       2: 'rig-hub-introduction',
