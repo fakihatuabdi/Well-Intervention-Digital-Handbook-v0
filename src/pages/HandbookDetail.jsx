@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 import Header from '../components/Header';
 import { generalKnowledgeChapters, rigHubChapters, articleContent } from '../data/handbookData';
 import { incrementArticleView } from '../utils/viewTracker';
@@ -166,21 +166,21 @@ function HandbookDetail() {
           </>
         ) : (
           <div className="coming-soon-section">
-            <div className="module-card">
+            <div 
+              className="module-card" 
+              style={{ cursor: 'pointer' }}
+              onClick={(e) => {
+                e.stopPropagation();
+                window.location.href = '/handbook/rig-hub';
+              }}
+            >
               <h4 className="module-title">Rig Hub</h4>
               <p className="module-description">
                 10 chapters - Rig Hub Introduction, Artificial Lift, Heavy/Light Oil Best Practices, Special Operation, SIMOPS, Appendix.
               </p>
               <button 
                 type="button"
-                className="chapter-button" 
-                style={{ cursor: 'pointer', pointerEvents: 'all', zIndex: 10, position: 'relative' }}
-                onClick={(e) => {
-                  e.preventDefault();
-                  e.stopPropagation();
-                  console.log('Navigating to Rig Hub...');
-                  navigate('/handbook/rig-hub');
-                }}
+                className="chapter-button"
               >
                 Open
               </button>
