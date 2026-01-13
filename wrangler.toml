@@ -1,0 +1,5 @@
+name = "well-intervention-handbook"
+compatibility_date = "2026-01-13"
+
+[site]
+bucket = "./dist"
