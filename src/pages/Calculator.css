@@ -55,7 +55,6 @@
   box-shadow: 0 10px 36px rgba(15, 23, 42, 0.08);
   position: relative;
   overflow: hidden;
-  animation: fadeInUp 0.6s ease-out;
 }
 
 .calculator-hero::before {
@@ -78,7 +77,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  animation: bounceIn 0.8s ease-out 0.2s forwards;
+  animation: bounceIn 0.6s ease-out;
   will-change: transform, opacity;
 }
 
@@ -115,7 +114,6 @@
   gap: 16px;
   max-width: 1200px;
   margin: 0 auto;
-  animation: fadeInUp 0.6s ease-out 0.3s forwards;
 }
 
 .calculator-card {
@@ -130,20 +128,20 @@
   border: 1px solid rgba(255, 255, 255, 0.8);
   position: relative;
   overflow: hidden;
-  animation: slideInCard 0.5s ease-out forwards;
+  animation: slideInCard 0.4s ease-out both;
   will-change: transform, box-shadow;
 }
 
 .calculator-card:nth-child(1) {
-  animation-delay: 0.4s;
+  animation-delay: 0s;
 }
 
 .calculator-card:nth-child(2) {
-  animation-delay: 0.5s;
+  animation-delay: 0.1s;
 }
 
 .calculator-card:nth-child(3) {
-  animation-delay: 0.6s;
+  animation-delay: 0.2s;
 }
 
 .calculator-card::before {
@@ -195,7 +193,7 @@
   text-align: center;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
   border: 2px dashed rgba(59, 130, 246, 0.26);
-  animation: fadeInUp 0.6s ease-out 0.7s forwards;
+  animation: slideInCard 0.4s ease-out 0.3s both;
 }
 
 .coming-badge {
