@@ -1,3 +1,40 @@
+/* Keyframe Animations */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
 .calculator-hero {
   background: linear-gradient(135deg, #e8edf6 0%, #d9e4f4 50%, #c9d9f1 100%);
   padding: 44px 20px;
@@ -6,6 +43,7 @@
   box-shadow: 0 10px 36px rgba(15, 23, 42, 0.08);
   position: relative;
   overflow: hidden;
+  animation: fadeInUp 0.6s ease-out;
 }
 
 .calculator-hero::before {
@@ -27,6 +65,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  animation: bounceIn 0.8s ease-out 0.2s both;
 }
 
 .calculator-logo {
@@ -34,6 +73,7 @@
   height: 120px;
   object-fit: contain;
   display: block;
+  animation: pulse 3s ease-in-out infinite;
 }
 
 .calculator-hero-title {
@@ -60,6 +100,7 @@
   gap: 16px;
   max-width: 1200px;
   margin: 0 auto;
+  animation: fadeInUp 0.6s ease-out 0.3s both;
 }
 
 .calculator-card {
@@ -74,6 +115,19 @@
   border: 1px solid rgba(255, 255, 255, 0.8);
   position: relative;
   overflow: hidden;
+  animation: fadeInUp 0.5s ease-out both;
+}
+
+.calculator-card:nth-child(1) {
+  animation-delay: 0.4s;
+}
+
+.calculator-card:nth-child(2) {
+  animation-delay: 0.5s;
+}
+
+.calculator-card:nth-child(3) {
+  animation-delay: 0.6s;
 }
 
 .calculator-card::before {
@@ -125,6 +179,7 @@
   text-align: center;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
   border: 2px dashed rgba(59, 130, 246, 0.26);
+  animation: fadeInUp 0.6s ease-out 0.7s both;
 }
 
 .coming-badge {
@@ -139,6 +194,7 @@
   font-weight: 700;
   margin-bottom: 16px;
   box-shadow: 0 4px 16px rgba(37, 99, 235, 0.28);
+  animation: pulse 2s ease-in-out infinite;
 }
 
 .coming-message {
