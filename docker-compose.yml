@@ -1,0 +1,9 @@
+version: "3.9"
+
+services:
+  web:
+    image: ghcr.io/fakihatuabdi/well-intervention-digital-handbook:latest
+    build: .
+    ports:
+      - "3000:80"
+    restart: always

@@ -12,6 +12,14 @@ A comprehensive digital handbook application for oil and gas professionals, feat
 - 🔖 Bookmarks for saving articles
 - 📱 Fully responsive design
 
+## Self-host & always-on
+
+- Container image: GitHub Actions builds and pushes `ghcr.io/<owner>/well-intervention-digital-handbook:latest` on every push to `main` (see [.github/workflows/docker-publish.yml](.github/workflows/docker-publish.yml)).
+- Quick run locally or on server: `docker compose up -d` (uses [docker-compose.yml](docker-compose.yml), serves on port 3000 by default, auto-restarts).
+- Update to latest build: `docker compose pull && docker compose up -d` to sync with the newest image; no manual `npm start` needed.
+- Build manually if desired: `docker build -t ghcr.io/<owner>/well-intervention-digital-handbook:dev .` then run with `docker run -p 3000:80 ...`.
+- SPA routing handled by Nginx config in [deploy/nginx.conf](deploy/nginx.conf); cache headers tuned for fast updates while keeping assets cached.
+
 Everything you do here is contained within this one codespace. There is no repository on GitHub yet. If and when you’re ready you can click "Publish Branch" and we’ll create your repository and push up your project. If you were just exploring then and have no further need for this code then you can simply delete your codespace and it's gone forever.
 
 This project was bootstrapped for you with [Vite](https://vitejs.dev/).
